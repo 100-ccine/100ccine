@@ -21,7 +21,8 @@ import review.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", main.views.index),
+    path("", main.views.index, name="home"),
+    path("info1/", main.views.info1, name="info1"),
     path("review/", include("review.urls", namespace="review")),
     path('accounts/', include('allauth.urls')),
 ]

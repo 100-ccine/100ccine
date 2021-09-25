@@ -1,35 +1,48 @@
-{% extends 'main/base.html' %}  
-{% block content %}
+{% extends 'main/base.html' %} {% block content %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
   <head>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
   </head>
   <style>
-    body{background-color: rgb(16,20,33);}
-    </style>
+    body {
+      background-color: rgb(16, 20, 33);
+    }
+  </style>
   <body>
-    <div class="Vaccinated">
-      <div class="v_left">
-        <p>전국 1차 접종</p>
-        <p>%</p>
+    <div class="content">
+      <div class="Vaccinated">
+        <div class="v_left">
+          <p>전국 1차 접종</p>
+          <p>%</p>
+        </div>
+        <div class="v_left2">
+          <p>전국 완전 접종</p>
+          <p>%</p>
+        </div>
+        <div class="v_right">
+          <p>확진자</p>
+          <p>명</p>
+        </div>
+        <div class="v_right2">
+          <p>사망자</p>
+          <p>명</p>
+        </div>
       </div>
-      <div class="v_left2">
-        <p>전국 완전 접종</p>
-        <p>%</p>
-      </div>
-      <div class="v_right"> 
-        <p>확진자</p>
-        <p>명</p>
-      </div>
-      <div class="v_right2"> 
-        <p>사망자</p>
-        <p>명</p>
+      <div class="graphs">
+        <h1 class="title">{{title}}</h1>
+        <div class="graph">{{a_div|safe}}</div>
+        <div class="graph">{{p_div|safe}}</div>
+        <div class="graph">{{m_div|safe}}</div>
+        <div class="graph">{{j_div|safe}}</div>
+        <div class="graph">{{da_div|safe}}</div>
+        <div class="graph">{{dp_div|safe}}</div>
+        <div class="graph">{{dm_div|safe}}</div>
+        <div class="graph">{{dj_div|safe}}</div>
       </div>
     </div>
   </body>
 
-
-{% endblock %}
+  {% endblock %}
+</html>
