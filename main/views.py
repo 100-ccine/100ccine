@@ -113,19 +113,6 @@ def info1(request):
     m_script, m_div = components(m)
     j_script, j_div = components(j)
 
-    y, x = df1.iloc[7][1:], list(df1.head())[1:]
-    da = vbar(x, y, "아스트라제네카", "사망 현황")
-    y, x = df1.iloc[8][1:], list(df1.head())[1:]
-    dp = vbar(x, y, "화이자", "사망 현황")
-    y, x = df1.iloc[9][1:], list(df1.head())[1:]
-    dm = vbar(x, y, "모더나", "사망 현황")
-    y, x = df1.iloc[10][1:], list(df1.head())[1:]
-    dj = vbar(x, y, "얀센", "사망 현황")
-
-    da_script, da_div = components(da)
-    dp_script, dp_div = components(dp)
-    dm_script, dm_div = components(dm)
-    dj_script, dj_div = components(dj)
     title = "백신별 이상 반응 신고 현황"
 
     context = {
@@ -133,10 +120,6 @@ def info1(request):
         "p_script": p_script, "p_div": p_div,
         "m_script": m_script, "m_div": m_div,
         "j_script": j_script, "j_div": j_div,
-        "da_script": da_script, "da_div": da_div,
-        "dp_script": dp_script, "dp_div": dp_div,
-        "dm_script": dm_script, "dm_div": dm_div,
-        "dj_script": dj_script, "dj_div": dj_div,
         "title": title
     }
 
