@@ -1,9 +1,12 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
 <div class="container my-3">
 
   <button style="margin-left: 75%; ">
     <a href="{% url 'review:write' %}">글쓰기</a>
    </button>
-    <table class="table">
+    <table class="table" style="color:white; margin-left:35%; margin-top: 5%;">
         <thead>
         <tr>
             <th><span class="iconify" data-icon="emojione:cherries"></span> 제목 </th>
@@ -12,7 +15,7 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody style="margin-top: 2%;">
           
             {% for object in objects %}
 
@@ -29,7 +32,7 @@
         </tbody>
     </table>
 
-    <div class="row mt-2">
+    <div class="row mt-2" style=" margin-left:35%;">
       <div class="col-12">
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
@@ -64,3 +67,5 @@
     </div>
 
 </div>
+
+{% endblock %}

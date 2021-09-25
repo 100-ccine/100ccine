@@ -1,6 +1,35 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
-hi
+<!doctype html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <style>
+    body{background-color: rgb(16,20,33);}
+    </style>
+  <body>
+    <div class="Vaccinated">
+      <div class="v_left">
+        <p>전국 1차 접종</p>
+        <p>%</p>
+      </div>
+      <div class="v_left2">
+        <p>전국 완전 접종</p>
+        <p>%</p>
+      </div>
+      <div class="v_right"> 
+        <p>확진자</p>
+        <p>명</p>
+      </div>
+      <div class="v_right2"> 
+        <p>사망자</p>
+        <p>명</p>
+      </div>
+    </div>
+  </body>
+
 
 {% endblock %}

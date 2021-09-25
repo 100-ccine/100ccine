@@ -12,7 +12,7 @@ def list(request):
     list_object['objects'] = review_object
 
     page = int(request.GET.get('p', 1))
-    pagenator = Paginator(review_object, 5)
+    pagenator = Paginator(review_object, 10)
     list_object['page'] = pagenator.get_page(page)
 
     return render(request, 'review/list.html', list_object)
@@ -34,7 +34,7 @@ def detail(request, id):
             comments.board = review_object
             comments.pub_date = timezone.now()
             comments.free_id = id
-            comments.writer = ""
+            comments.writer = "블라블라"
             comments.save()
             print(text)
             return redirect('/review/' + str(review_object.id))
