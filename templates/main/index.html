@@ -11,6 +11,18 @@
     }
   </style>
   <body>
+    {% for data in crollData %}
+      
+      <a style = "color: #544E54;" href = {{data.link}}><h5 style="margin-bottom: 20px; text-align: center;">{{data.link}}</h5></a>
+      
+
+
+    {% endfor %}
+
+
+    {{crollData.link}}
+      
+      
     <div class="content">
       <div class="Vaccinated">
         <div class="v_left">
@@ -42,6 +54,10 @@
         <div class="graph">{{dj_div|safe}}</div>
       </div>
     </div>
+  </body>
+
+
+
   </body>
 
   {% endblock %}
