@@ -23,24 +23,39 @@
     {{crollData.link}}
       
       
+    <div class="content">
       <div class="Vaccinated">
         <div class="v_left">
           <p>전국 1차 접종</p>
-          <p>{{crollData.link}}</p>
+          <p>%</p>
         </div>
         <div class="v_left2">
           <p>전국 완전 접종</p>
           <p>%</p>
         </div>
-        <div class="v_right"> 
-          <p>1차 접종자 수</p>
+        <div class="v_right">
+          <p>확진자</p>
           <p>명</p>
         </div>
-        <div class="v_right2"> 
-          <p>완전 접종자 수</p>
+        <div class="v_right2">
+          <p>사망자</p>
           <p>명</p>
         </div>
       </div>
+      <div class="graphs">
+        <h1 class="title">{{title}}</h1>
+        <div class="graph">{{a_div|safe}}</div>
+        <div class="graph">{{p_div|safe}}</div>
+        <div class="graph">{{m_div|safe}}</div>
+        <div class="graph">{{j_div|safe}}</div>
+        <div class="graph">{{da_div|safe}}</div>
+        <div class="graph">{{dp_div|safe}}</div>
+        <div class="graph">{{dm_div|safe}}</div>
+        <div class="graph">{{dj_div|safe}}</div>
+      </div>
+    </div>
+  </body>
+
 
 
   </body>

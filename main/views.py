@@ -1,4 +1,17 @@
-<<<<<<< HEAD
+from bokeh.models.annotations import Tooltip
+from bokeh.io import curdoc
+from bokeh.models import ColumnDataSource
+from bokeh.themes import built_in_themes
+from bokeh.plotting import figure, show
+from bokeh.embed import components
+from bokeh.models import HoverTool
+import json
+import pandas as pd
+from numpy import source
+from bokeh.util.serialization import encode_base64_dict
+from bokeh.models.scales import LinearScale
+from re import M
+from base64 import encode
 from .models import CrollData
 from django.shortcuts import render
 import requests
@@ -6,30 +19,36 @@ from bs4 import BeautifulSoup
 import threading
 import time
 
+
 def index(request):
     crolldata = CrollData.objects.all()
     crolldata.delete()
-    req = requests.get('https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=%EC%BD%94%EB%A1%9C%EB%82%9819%EB%B0%B1%EC%8B%A0%ED%98%84%ED%99%A9')
+    req = requests.get(
+        'https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=%EC%BD%94%EB%A1%9C%EB%82%9819%EB%B0%B1%EC%8B%A0%ED%98%84%ED%99%A9')
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
     data = {}
 
-    datas = soup.select("#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(1) > dl > dd > strong.value")
+    datas = soup.select(
+        "#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(1) > dl > dd > strong.value")
     for title in datas:
         print(title.text)
         data["accumulate1"] = title.text
 
-    datas = soup.select("#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(2) > dl > dd > strong.value")
+    datas = soup.select(
+        "#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(2) > dl > dd > strong.value")
     for title in datas:
         print(title.text)
         data["new1"] = title.text
 
-    datas = soup.select("#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(1) > dl > dd > span > span.total > i.num")
+    datas = soup.select(
+        "#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(1) > dl > dd > span > span.total > i.num")
     for title in datas:
         print(title.text)
         data["accumulate2"] = title.text
-    
-    datas = soup.select("#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(2) > dl > dd > span > span.total > i.num")
+
+    datas = soup.select(
+        "#_cs_vaccine_info > div > div.main_tab_area > div > div > div > div:nth-child(2) > dl > dd > span > span.total > i.num")
     for title in datas:
         print(title.text)
         data["new2"] = title.text
@@ -37,30 +56,15 @@ def index(request):
     for t, l in data.items():
         CrollData(title=t, link=l).save()
 
-    
     list_object = {}
 
     crolldata = CrollData.objects.all()
     list_object['crollData'] = crolldata
 
     return render(request, "main/index.html", list_object)
-=======
+
+
 # -*- coding: utf-8 -*-
-from base64 import encode
-from re import M
-from bokeh.models.scales import LinearScale
-from bokeh.util.serialization import encode_base64_dict
-from numpy import source
-import pandas as pd
-import json
-from bokeh.models import HoverTool
-from bokeh.embed import components
-from bokeh.plotting import figure, show
-from bokeh.themes import built_in_themes
-from bokeh.models import ColumnDataSource
-from bokeh.io import curdoc
-from django.shortcuts import render
-from bokeh.models.annotations import Tooltip
 
 
 def index(request):
@@ -171,4 +175,3 @@ def info1(request):
     }
 
     return render(request, "main/index.html", context=context)
->>>>>>> 3f3d1eab19cb97aeeee8d628f82065f4583599ba
