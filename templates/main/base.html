@@ -29,7 +29,12 @@
         <button type="button" class="Home_btn">Home</button>
         <button type="button" class="Review_btn"><a style="color:white;" href="{% url 'review:list' %}">Review</a></button>
         <button type="button" class="QnA_btn">QnA</button>
-        <button typr="button" class="Login">Login</button>
+
+        {%if user.is_authenticated%}
+        <a href="{%url 'account_logout'%}"><button typr="button" class="Login">Log-out</a> </button>
+        {%else%}
+        <a href="{%url 'account_login'%}"><button typr="button" class="Login" >Log-in</a> </button>
+        {%endif%}
       </div>
       </div>
     </aside>

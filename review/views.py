@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.contrib import messages
-from .models import Review, Comment
+from .models import Review, Comment, User
 from .forms import ReviewForm, CommentForm
 
 def list(request):
@@ -61,7 +61,7 @@ def create(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             online = form.save(commit=False)
-            online.writer = ""
+            online.writer = request.user #수정
             online.pub_date = timezone.now()
             online.save()
             return redirect('review:list')
@@ -80,7 +80,7 @@ def edit(request, id):
         form = ReviewForm(request.POST, instance=edit_object)
         if form.is_valid():
             edit_object = form.save(commit=False)
-            edit_object.writer = ""
+            edit_object.writer = request.user #수정
             edit_object.pub_date = timezone.now()
             edit_object.save()
             return redirect('review:list')
