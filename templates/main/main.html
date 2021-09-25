@@ -1,8 +1,9 @@
+{% extends 'main/base.html' %}
+{% block content %}
 <!doctype html>
 <html>
 
   <head>
-    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <div class="logo_box">
@@ -13,6 +14,15 @@
       <button>Review</button>
       <button>QnA</button>
     </div>
+    {{a_div|safe}}
+    {{p_div|safe}}
+    {{m_div|safe}}
+    {{j_div|safe}}
+    {{da_div|safe}}
+    {{dp_div|safe}}
+    {{dm_div|safe}}
+    {{dj_div|safe}}
+    
     </body>
 
-  
+  {% endblock %}
