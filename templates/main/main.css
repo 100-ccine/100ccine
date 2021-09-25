@@ -1,7 +1,0 @@
-.logo_box{
-    display: flex;
-    position:relative;
-    flex-direction: column;
-    border: 1px solid skyblue;
-    background-color: darkslategrey;
-}
