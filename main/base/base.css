@@ -1,0 +1,41 @@
+aside.left_side section{
+}
+aside.left_side section.logo_box .menu {
+    font-size: 0.8em;
+}
+aside.left_side section.logo_box .menu p {
+    display: flex;
+    align-items: center;
+}
+aside.left_side section.logo_box .menu p i {
+    margin-right: 10px;
+}
+aside.left_side section.logo_box .menu button {
+    display: block;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    margin-top: 20px;
+    margin-bottom: 3px;
+    padding: 12px;
+    width: 100%;
+}
+.menu_box{
+    margin-left: 80px;
+    margin-top: 5px;
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    border:1px solid rgb(75,71,85);
+    border-radius:5px;
+    background-color: rgb(25,31,44);
+    width: 150px;
+    height: 250px;
+    justify-content: center;
+    /*align-items: center;*/
+    padding: 10px 10px;
+}
+.LOGO{
+    margin-left: 50px;
+    width: 230px;
+}
