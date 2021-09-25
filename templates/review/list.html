@@ -1,19 +1,29 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
-<div class="container my-3">
+<div class="container my-3" >
 
-  
 
-  <button style="margin-left: 75%; ">
+  <button style="margin-left: 13%; margin-top: 80px; border: 1px solid rgb(75, 71, 85);
+  border-radius: 5px;
+  background-color: rgba(86, 85, 88, 0.253); color: white;">
     <a href="{% url 'review:write' %}">글쓰기</a>
    </button>
-    <table class="table" style="color:white; margin-left:700px; margin-top: 5%;">
-        <thead>
+    <table class="table" style="color:white; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+    margin-top: 50px; border: 1px solid rgb(75, 71, 85);
+  border-radius: 5px;
+  background-color: rgb(25, 31, 44);; width: 700px; align-content: center;">
+        <thead style="background-color: rgb(25,31,44);; font-size: 15px;">
+
         <tr>
-            <th><span class="iconify" data-icon="emojione:cherries"></span> 제목 </th>
-            <th><span class="iconify" data-icon="emojione:face-blowing-a-kiss"></span> 이름</th>
-            <th><span class="iconify" data-icon="emojione:carrot"></span>날짜</th>
+            <th></th>
+            <th><span class="iconify"></span> 제목 </th>
+            <th><span class="iconify"></span> 이름</th>
+            <th><span class="iconify"></span>날짜</th>
         </tr>
         </thead>
 
@@ -22,7 +32,8 @@
             {% for object in objects %}
 
             <tr style="filter: hue-rotate(120deg);
-          animation: animate 10s linear infinite;" onclick="location.href='/review/{{ object.id }}'">
+          animation: animate 10s linear infinite; background-color: rgba(86, 85, 88, 0.507);" onclick="location.href='/review/{{ object.id }}'">
+                  <td><li></li></td>
                   <td>{{object.title}}</td>
                   <td>{{object.writer}}</td>
                   <td> {{object.pub_date}} </td>
@@ -34,7 +45,7 @@
         </tbody>
     </table>
 
-    <div class="row mt-2" style=" margin-left:35%;">
+    <div class="row mt-2" style=" margin-left:38%;">
       <div class="col-12">
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
