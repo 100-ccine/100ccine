@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load i18n %} 
+{% block content %}
+
+<section id="portfolio" style="background-size:100%; margin:200px">
+  <div style="width:300px; margin:0 auto; ">
+  <div class="wow fadeInUp" data-wow-delay="0.5s">
+    <div class="login-sec" >
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="login-btn">
+          <input type="submit" class="upload-btn" value="Login" />
+        </div>
+      </form>
+    </div>
+    <br>
+    <div>
+      <p>회원이 아니신가요? <a href="{% url 'account_signup' %}">회원가입</a></p>
+    </div>
+  </div>
+</div> 
+</section>
+{% endblock %}

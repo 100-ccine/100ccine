@@ -1,9 +1,18 @@
-{% load static%}
+{% load static %}
+
 <!doctype html>
 <html>
 
   <head>
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
+    <tilte></tilte>
+        <meta charset="utf-8">
+        
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
   </head>
   <style>
     body{background-color: rgb(16,20,33);}
@@ -13,18 +22,22 @@
   <body>
     <aside class="left_side">
       <section class="logo_box">
-        <img class="LOGO" src="finLogo.png" alt="LOGO">
+        <img class="LOGO" src="{% static 'img/finLogo.png' %}" alt="LOGO">
       </div>
       <div class="menu_box">
       <div class="menu">
         <button type="button" class="Home_btn">Home</button>
-        <button type="button" class="Review_btn">Review</button>
+        <button type="button" class="Review_btn"><a style="color:white;" href="{% url 'review:list' %}">Review</a></button>
         <button type="button" class="QnA_btn">QnA</button>
         <button typr="button" class="Login">Login</button>
       </div>
       </div>
     </aside>
+
+    {% block content %} 
+    {% endblock %}
   </body>
 
-{% block content %} 
-{% endblock %}
+</html>
+
+
