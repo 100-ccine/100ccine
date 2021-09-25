@@ -18,10 +18,10 @@
 
   
   <button style="margin-left: 43%; margin-top: 1%;"class="btn btn-outline-secondary">
-      <a style= "color: #7D757D;" href="{% url 'review:edit' review_object.id %}">글수정</a>
+      <a style= "color: white;" href="{% url 'review:edit' review_object.id %}">글수정</a>
   </button>
   <button style="margin-left: 10px; margin-top: 1%; "class="btn btn-outline-secondary">
-      <a style= "color: #7D757D;" href="{% url 'review:delete' review_object.id %}">글삭제</a>
+      <a style= "color: white;" href="{% url 'review:delete' review_object.id %}">글삭제</a>
   </button>
  
 
@@ -44,10 +44,10 @@
       <div style = "margin-top: 0.5%;"class='cm'>
         {{comment.writer}} : {{comment.text}}
         <button style = "height: 30px;" class="btn btn-outline-secondary" onclick="location.href='/review/{{ object.id }}'">
-          <a style= "color: #7D757D;" href="{% url 'review:comment_edit' review_object.id comment.id %}">수정</a>
+          <a href="{% url 'review:comment_edit' review_object.id comment.id %}">수정</a>
           </button>
         <button style = "height: 30px;" class="btn btn-outline-secondary">
-          <a style= "color: #7D757D;" href="{% url 'review:comment_delete' review_object.id comment.id %}">삭제</a>
+          <a href="{% url 'review:comment_delete' review_object.id comment.id %}">삭제</a>
           </button>  
         
       </div>

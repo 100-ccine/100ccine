@@ -12,7 +12,7 @@ def list(request):
     list_object['objects'] = review_object
 
     page = int(request.GET.get('p', 1))
-    pagenator = Paginator(review_object, 5)
+    pagenator = Paginator(review_object, 10)
     list_object['page'] = pagenator.get_page(page)
 
     return render(request, 'review/list.html', list_object)
@@ -34,7 +34,7 @@ def detail(request, id):
             comments.board = review_object
             comments.pub_date = timezone.now()
             comments.free_id = id
-            comments.writer = ""
+            comments.writer = "블라블라"
             comments.save()
             print(text)
             return redirect('/review/' + str(review_object.id))
@@ -61,7 +61,7 @@ def create(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             online = form.save(commit=False)
-            online.writer = ""
+            online.writer = "블라블라"
             online.pub_date = timezone.now()
             online.save()
             return redirect('review:list')
@@ -80,7 +80,7 @@ def edit(request, id):
         form = ReviewForm(request.POST, instance=edit_object)
         if form.is_valid():
             edit_object = form.save(commit=False)
-            edit_object.writer = ""
+            edit_object.writer = "블라블라"
             edit_object.pub_date = timezone.now()
             edit_object.save()
             return redirect('review:list')
