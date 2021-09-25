@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th><span class="iconify" data-icon="emojione:cherries"></span> 제목 </th>
+        <th><span class="iconify" data-icon="emojione:face-blowing-a-kiss"></span> 이름</th>
+        <th><span class="iconify" data-icon="emojione:carrot"></span>날짜</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      
+        {% for object in page %}
+
+        <tr style="filter: hue-rotate(120deg);
+      animation: animate 10s linear infinite;" onclick="location.href='/online_class/{{ object.id }}'">
+              <td>{{object.title}}</td>
+              <td>{{object.writer}}</td>
+              <td> {{object.pub_date}} </td>
+        
+       </tr>
+
+        {% endfor %}
+      
+    </tbody>
+</table>
