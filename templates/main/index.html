@@ -11,24 +11,38 @@
     body{background-color: rgb(16,20,33);}
     </style>
   <body>
-    <div class="Vaccinated">
-      <div class="v_left">
-        <p>전국 1차 접종</p>
-        <p>%</p>
+    {% for data in crollData %}
+      
+      <a style = "color: #544E54;" href = {{data.link}}><h5 style="margin-bottom: 20px; text-align: center;">{{data.link}}</h5></a>
+      
+
+
+    {% endfor %}
+
+
+    {{crollData.link}}
+      
+      
+      <div class="Vaccinated">
+        <div class="v_left">
+          <p>전국 1차 접종</p>
+          <p>{{crollData.link}}</p>
+        </div>
+        <div class="v_left2">
+          <p>전국 완전 접종</p>
+          <p>%</p>
+        </div>
+        <div class="v_right"> 
+          <p>1차 접종자 수</p>
+          <p>명</p>
+        </div>
+        <div class="v_right2"> 
+          <p>완전 접종자 수</p>
+          <p>명</p>
+        </div>
       </div>
-      <div class="v_left2">
-        <p>전국 완전 접종</p>
-        <p>%</p>
-      </div>
-      <div class="v_right"> 
-        <p>확진자</p>
-        <p>명</p>
-      </div>
-      <div class="v_right2"> 
-        <p>사망자</p>
-        <p>명</p>
-      </div>
-    </div>
+
+
   </body>
 
 
