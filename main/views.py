@@ -71,7 +71,7 @@ def index(request):
     # # x = [1, 2, 3, 4, 5]
     # # y = [4, 5, 5, 7, 2]
     df = pd.read_excel("./static/data/29.xlsx", sheet_name="이상반응 분류별 신고 현황", engine='openpyxl')
-    df1 = pd.read_excel("./static/data/29.xlsx", sheet_name="변경사망 현황",engine='openpyxl')
+    df1 = pd.read_excel("./static/data/29.xlsx", sheet_name="변경사망 현황", engine='openpyxl')
     legend = list(df.head())
     # p = figure(sizing_mode="stretch_width", max_width=500,
     #            height=250, tooltips=TOOLTIPS)
