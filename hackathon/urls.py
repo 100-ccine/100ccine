@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", main.views.index),
     path("review/", include("review.urls", namespace="review")),
+    path('accounts/', include('allauth.urls')),
 ]
