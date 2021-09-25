@@ -1,6 +1,9 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Review
+from django.utils import timezone
+from django.contrib import messages
+from .models import Review, Comment
+from .forms import ReviewForm, CommentForm
 
 def list(request):
     list_object = {}
@@ -17,11 +20,10 @@ def list(request):
 
 def detail(request, id):
     review_object = get_object_or_404(Review, pk = id)
-    comments = Review.objects.filter(board=id)
+    comments = Comment.objects.filter(board=id)
 
     context={}
     context['review_object']=review_object
-    context['session_name'] = request.session['name']
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -32,10 +34,10 @@ def detail(request, id):
             comments.board = review_object
             comments.pub_date = timezone.now()
             comments.free_id = id
-            comments.writer = request.session['name']
+            comments.writer = ""
             comments.save()
             print(text)
-            return redirect('/online_class/' + str(review_object.id))
+            return redirect('/review/' + str(review_object.id))
         
     else:
         comment_form = CommentForm()
@@ -49,54 +51,54 @@ def detail(request, id):
 
         
 
-    return render(request, "class/detail.html", context)
+    return render(request, "review/detail.html", context)
 
 def write(request):
-    return render(request, "class/class_write.html")
+    return render(request, "review/write.html")
 
 def create(request):
     if request.method == 'POST':
-        form = OnlineForm(request.POST)
+        form = ReviewForm(request.POST)
         if form.is_valid():
             online = form.save(commit=False)
-            online.writer = request.session.get('name')
+            online.writer = ""
             online.pub_date = timezone.now()
             online.save()
-            return redirect('online_class:index')
+            return redirect('review:list')
         
     else:
-        form = OnlineForm()
+        form = ReviewForm()
     
     context = {'form':form}
 
-    return render(request, 'class/class_write.html', context)
+    return render(request, 'review/write.html', context)
 
 def edit(request, id):
-    edit_object = get_object_or_404(Online, pk = id)
+    edit_object = get_object_or_404(Review, pk = id)
 
     if request.method == 'POST':
-        form = OnlineForm(request.POST, instance=edit_object)
+        form = ReviewForm(request.POST, instance=edit_object)
         if form.is_valid():
             edit_object = form.save(commit=False)
-            edit_object.writer = request.session.get('name')
+            edit_object.writer = ""
             edit_object.pub_date = timezone.now()
             edit_object.save()
-            return redirect('online_class:index')
+            return redirect('review:list')
         
     else:
-        form = OnlineForm(instance=edit_object)
+        form = ReviewForm(instance=edit_object)
     
     context = {'form':form}
-    return render(request, 'class/class_write.html', context)
+    return render(request, 'review/write.html', context)
 
 def delete(request, id):
-    delete_object = get_object_or_404(Online, pk = id)
+    delete_object = get_object_or_404(Review, pk = id)
     delete_object.delete()
-    return redirect('online_class:index')
+    return redirect('review:list')
 
-def comment_edit(request, online_id, comment_id):
-    board = get_object_or_404(Online, id=online_id)
-    comments = Comment.objects.filter(board=online_id)
+def comment_edit(request, review_id, comment_id):
+    board = get_object_or_404(Review, id=review_id)
+    comments = Comment.objects.filter(board=review_id)
     my_comment = Comment.objects.get(id=comment_id)
     comment_form = CommentForm(instance=my_comment)
 
@@ -105,7 +107,7 @@ def comment_edit(request, online_id, comment_id):
         if update_comment_form.is_valid():
             update_comment_form.save()
 
-            return redirect('/online_class/'+str(board.id))
+            return redirect('/review/'+str(board.id))
 
     context={
         'board':board,
@@ -114,23 +116,23 @@ def comment_edit(request, online_id, comment_id):
         'my_comment':my_comment,
     }
 
-    return render(request, 'class/class_comment_edit.html', context)
+    return render(request, 'review/comment_edit.html', context)
 
-def comment_delete(request, online_id, comment_id):
-    board = Online.objects.get(id=online_id)
+def comment_delete(request, review_id, comment_id):
+    board = Review.objects.get(id=review_id)
     comment = Comment.objects.get(id=comment_id)
 
-    if request.session.get('name') != comment.writer :
-        messages.warning(request, '권한없음')
-        return redirect('/online_class/'+str(board.id))
+    # if request.session.get('name') != comment.writer :
+    #     messages.warning(request, '권한없음')
+    #     return redirect('/review/'+str(board.id))
     
     if request.method == "POST":
         comment.delete()
-        return redirect('/online_class/'+str(board.id))
+        return redirect('/review/'+str(board.id))
     
     
     context={
         'comment':comment,
         'board':board
     }
-    return render(request, 'class/class_comment_delete.html',context)
+    return render(request, 'review/comment_delete.html',context)
